@@ -1,0 +1,135 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-role: var(--role);
+  --color-role-foreground: var(--role-foreground);
+  --color-role-soft: var(--role-soft);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--role) 28%, transparent), 0 18px 45px -20px color-mix(in oklab, var(--role) 60%, transparent);
+  --shadow-panel: 0 24px 60px -30px oklch(0 0 0 / 0.85);
+}
+
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.19 0.035 264);
+  --foreground: oklch(0.985 0.002 250);
+  --surface: oklch(0.24 0.033 264);
+  --card: oklch(0.245 0.032 264);
+  --card-foreground: oklch(0.985 0.002 250);
+  --popover: oklch(0.245 0.032 264);
+  --popover-foreground: oklch(0.985 0.002 250);
+  --primary: oklch(0.62 0.19 259);
+  --primary-foreground: oklch(0.99 0.002 250);
+  --secondary: oklch(0.3 0.033 264);
+  --secondary-foreground: oklch(0.96 0.003 250);
+  --muted: oklch(0.29 0.03 264);
+  --muted-foreground: oklch(0.72 0.032 256);
+  --accent: oklch(0.32 0.04 264);
+  --accent-foreground: oklch(0.98 0.002 250);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.99 0.002 250);
+  --border: oklch(0.33 0.03 264);
+  --input: oklch(0.33 0.03 264);
+  --ring: oklch(0.62 0.19 259);
+  --success: oklch(0.72 0.18 149);
+  --warning: oklch(0.77 0.16 78);
+  --danger: oklch(0.65 0.22 25);
+  --info: oklch(0.68 0.15 235);
+  --role: oklch(0.62 0.19 259);
+  --role-foreground: oklch(0.99 0.002 250);
+  --role-soft: oklch(0.62 0.19 259 / 0.14);
+  --chart-1: oklch(0.62 0.19 259);
+  --chart-2: oklch(0.72 0.17 162);
+  --chart-3: oklch(0.65 0.19 300);
+  --chart-4: oklch(0.77 0.16 78);
+  --chart-5: oklch(0.65 0.22 25);
+}
+
+[data-role="student"] {
+  --role: oklch(0.62 0.19 259);
+  --role-soft: oklch(0.62 0.19 259 / 0.14);
+}
+[data-role="admin"] {
+  --role: oklch(0.7 0.16 162);
+  --role-foreground: oklch(0.16 0.03 264);
+  --role-soft: oklch(0.7 0.16 162 / 0.14);
+}
+[data-role="warden"] {
+  --role: oklch(0.65 0.2 297);
+  --role-soft: oklch(0.65 0.2 297 / 0.16);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.outpass-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(46%) sepia(93%) saturate(1814%) hue-rotate(201deg) brightness(96%) contrast(97%);
+  cursor: pointer;
+}
+
+@utility panel {
+  background: linear-gradient(160deg, color-mix(in oklab, var(--surface) 92%, transparent), color-mix(in oklab, var(--background) 80%, transparent));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-panel);
+}
+
+@utility role-chip {
+  background: var(--role-soft);
+  color: var(--role);
+  border: 1px solid color-mix(in oklab, var(--role) 35%, transparent);
+}
+
+@utility grid-glow {
+  background-image:
+    radial-gradient(900px 400px at 85% -10%, color-mix(in oklab, var(--role) 22%, transparent), transparent 70%),
+    radial-gradient(700px 400px at 0% 100%, oklch(0.65 0.2 297 / 0.12), transparent 70%);
+}
